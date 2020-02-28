@@ -31,7 +31,7 @@ public class Seller
         this.location = location;
     }
     
-    /**
+     /**
      * Gets the seller's id
      *
      * @return id

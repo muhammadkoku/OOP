@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=DatabaseSeller
+comment1.params=
+comment1.target=DatabaseSeller()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ DatabaseSeller\r\n
+comment2.params=seller
+comment2.target=boolean\ addSeller(Seller)
+comment3.params=seller
+comment3.target=boolean\ removeSeller(Seller)
+comment3.text=\r\n\ Removing\ seller\r\n\r\n\ @return\ true\r\n
+comment4.params=
+comment4.target=Seller\ getSeller()
+comment5.params=
+comment5.target=java.lang.String[]\ getListSeller()
+comment5.text=\r\n\ Gets\ the\ seller\ list\ \r\n\r\n\ @return\ listSeller\r\n
+numComments=6

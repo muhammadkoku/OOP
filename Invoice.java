@@ -125,10 +125,11 @@ public class Invoice
      * To print out (printData)
      * 
      * @param idFood
+     * @param totalPrice
      */
     public void printData()
     {
-        System.out.println(idFood);
+        System.out.println(totalPrice);
     }
     
 }
