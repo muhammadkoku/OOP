@@ -1,13 +1,18 @@
 #BlueJ class context
 comment0.target=DatabaseFood
+comment0.text=\r\n\ @author\ Muhammad\ Koku\r\n\ @version\ 2020-02-27\r\n
 comment1.params=
 comment1.target=DatabaseFood()
+comment1.text=\r\n\ Constructor\ for\ objects\ in\ class\ DatabaseFood\r\n\ \r\n\ @param\ listFood\ \r\n
 comment2.params=food
 comment2.target=boolean\ adFood(Food)
+comment2.text=\r\n\ Adding\ food\r\n\r\n\ @return\ true\r\n
 comment3.params=food
 comment3.target=boolean\ removeFodd(Food)
+comment3.text=\r\n\ Removing\ food\r\n\r\n\ @return\ true\r\n
 comment4.params=
 comment4.target=Food\ getFood()
 comment5.params=
 comment5.target=java.lang.String[]\ getListFood()
+comment5.text=\r\n\ Gets\ the\ food\ list\ \r\n\r\n\ @return\ listFood\r\n
 numComments=6
