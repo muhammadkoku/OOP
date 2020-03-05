@@ -3,18 +3,15 @@
 public class DatabaseSeller
 {
     
-    private String listSeller[];
+    private static String listSeller[];
 
     /**
      * Constructor for objects of class DatabaseSeller
      */
-    public DatabaseSeller()
-    {
-       
-    }
+   
 
     
-    public boolean addSeller(Seller seller)
+    public static boolean addSeller(Seller seller)
     {
         return true;
     }
@@ -23,12 +20,12 @@ public class DatabaseSeller
      *
      * @return true
      */
-    public boolean removeSeller(Seller seller)
+    public static boolean removeSeller(Seller seller)
     {
         return true;
     }
     //return seller passed to the constructor
-    public Seller getSeller()
+    public static Seller getSeller()
     {
        return null;
     }
@@ -37,7 +34,7 @@ public class DatabaseSeller
      *
      * @return listSeller
      */
-    public String[] getListSeller()
+    public static String[] getListSeller()
     {
         return null;
     }

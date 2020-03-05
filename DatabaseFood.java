@@ -9,7 +9,7 @@ public class DatabaseFood
      * The variable for class DatabaseFood
      */
     
-    private String listFood[];
+    private static String listFood[];
 
     /**
      * Constructor for objects in class DatabaseFood
@@ -17,16 +17,13 @@ public class DatabaseFood
      * @param listFood 
      */
     
-    public DatabaseFood()
-    {
-        
-    }
+    
     /**
      * Adding food
      *
      * @return true
      */
-    public boolean adFood(Food food)
+    public static boolean adFood(Food food)
     {
         return true;
     }
@@ -35,12 +32,12 @@ public class DatabaseFood
      *
      * @return true
      */
-    public boolean removeFodd(Food food)
+    public static boolean removeFodd(Food food)
     {
         return true;
     }
     //return food passed to the constructor
-    public Food getFood()
+    public static Food getFood()
     {
        return null;
     }
@@ -49,7 +46,7 @@ public class DatabaseFood
      *
      * @return listFood
      */
-    public String[] getListFood()
+    public static String[] getListFood()
     {
         return null;
     }
