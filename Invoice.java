@@ -2,18 +2,17 @@
  * @author Muhammad Koku
  * @version 2020-02-27
  */
-public class Invoice
+public abstract class Invoice
 {
    /**
      * The variable for class Invoice
      */
     private int id;
-    private int idFood;
+    private Food Food;
     private String date;
-    private int totalPrice;
+    protected int totalPrice;
     private Customer customer;
-    private PaymentType paymentType;
-    private InvoiceStatus status;
+    private InvoiceStatus invoiceStatus;
     
     /**
      * Constructor for objects in class Invoice
@@ -24,14 +23,14 @@ public class Invoice
      * @param totalprice (invoice's total price)
      * @param customer (invoice's customer)
      */
-    public Invoice(int id, int idFood, String date, Customer customer, int totalPrice, InvoiceStatus status)
+    public Invoice(int id, Food Food, String date, Customer customer,  InvoiceStatus invoiceStatus)
     {
        this.id = id;
-       this.idFood = idFood;
+       this.Food = Food;
        this.date = date;
        this.customer = customer;
        this.totalPrice = totalPrice;
-       this.status = status;
+       this.invoiceStatus = invoiceStatus;
     }
 
     /**
@@ -48,9 +47,9 @@ public class Invoice
      *
      * @return idFood
      */
-    public int getIdFoods()
+    public Food getFood()
     {
-        return idFood;
+        return Food;
     }
     /**
      * Gets the invoice's date
@@ -84,10 +83,8 @@ public class Invoice
      *
      * @return paymenType
      */
-    public PaymentType getPaymentType()
-    {
-        return paymentType;
-    }
+    public abstract PaymentType getPaymentType();
+    
     /**
      * Gets the invoice's status
      *
@@ -95,7 +92,7 @@ public class Invoice
      */
     public InvoiceStatus getInvoiceStatus()
     {
-        return status;
+        return invoiceStatus;
     }
     /**
      * Sets the invoice's id
@@ -111,9 +108,9 @@ public class Invoice
      * 
      * @param idFood
      */
-     public void setIdFood(int idFood)
+     public void setFood(Food Food)
     {
-        this.idFood = idFood;
+        this.Food = Food;
     }
     /**
      * Sets the invoice's date
@@ -129,10 +126,8 @@ public class Invoice
      * 
      * @param totalPrice
      */
-    public void setTotalPrice(int totalPrice)
-    {
-        this.totalPrice = totalPrice;
-    }
+    public abstract void setTotalPrice();
+    
     /**
      * Sets the invoice's customer
      * 
@@ -143,23 +138,15 @@ public class Invoice
         this.customer = customer;
     }
     
-    /**
-     * Sets the invoice's payment type
-     * 
-     * @param paymentType
-     */
-    public void setPaymentType(PaymentType paymentType)
-    {
-        this.paymentType = paymentType;
-    }
+      
     /**
      * Sets the invoice's status
      * 
      * @param status
      */
-    public void setInvoiceStatus(InvoiceStatus status)
+    public void setInvoiceStatus(InvoiceStatus InvoiceStatus)
     {
-        this.status = status;
+        this.invoiceStatus = invoiceStatus;
     }
      /**
      * To print out (printData)
@@ -167,14 +154,9 @@ public class Invoice
      * @param idFood
      * @param totalPrice
      */
-    public void printData()
-    {
-        System.out.println("============INVOICE============");
-        System.out.println("ID:"+id);
-        System.out.println("Date:"+ date);
-        System.out.println("Customer:"+customer.getName());
-        System.out.println("Total Price:"+totalPrice);
-        System.out.println("Status:"+status);
-    }
+    public abstract void printData();
+    
+    
+   
     
 }

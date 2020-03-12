@@ -23,7 +23,7 @@ public class DatabaseFood
      *
      * @return true
      */
-    public static boolean adFood(Food food)
+    public static boolean addFood(Food food)
     {
         return true;
     }
