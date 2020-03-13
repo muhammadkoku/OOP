@@ -29,7 +29,7 @@ public class CashlessInvoice extends Invoice
         return promo;
     }
     
-    public void setPromo()
+    public void setPromo(Promo promo)
     {
         this.promo = promo;
     }
