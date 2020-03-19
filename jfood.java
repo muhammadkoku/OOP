@@ -1,3 +1,6 @@
+import java.util.*; 
+import java.util.regex.*;
+import java.text.SimpleDateFormat;
 
 public class Jfood 
 {
@@ -9,15 +12,14 @@ public class Jfood
         Food foodObj1 =  new Food(102, "Cappucino", sellerObj, 10000, FoodCategory.Coffee);
         
         
-        Customer customerObj = new Customer (432, "Alwan", "alwan.fadhil@gmail.com", "alwan123", 12,03,2020);
-        CashInvoice cashObj = new CashInvoice (1,foodObj, "12,03,2020", customerObj, InvoiceStatus.Ongoing);
-        CashInvoice cashObj1 = new CashInvoice (2,foodObj1, "12,03,2020", customerObj, InvoiceStatus.Ongoing, 10000);
+        Customer customerObj = new Customer (432, "Alwan", ".alwan.fadhil@gmail.com", "alwan1", new  GregorianCalendar(2020,3,19));
+        Customer customerObj1 = new Customer(433, "Ukok", "Alfiyansyah76@ui.ac.id", "Alfin123", 12,3,2020 );
+        Customer customerObj2 = new Customer(434, "alwan", "Alfiyansyah1@yahoo.com", "sss12");
         
         
-        System.out.println(customerObj);
-        
-        
-        
+        customerObj.toString();
+        customerObj1.toString();
+        customerObj2.toString();
         
       
         

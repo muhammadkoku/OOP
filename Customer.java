@@ -32,6 +32,8 @@ public class Customer
         this.email = email;
         this.password = password;
         this.joinDate = joinDate;
+        setEmail(email);
+        setPassword(password);        
     }
     
     public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
@@ -41,6 +43,8 @@ public class Customer
         this.email = email;
         this.password = password;
         this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
+        setEmail(email);
+        setPassword(password);
     }
     
     public Customer(int id, String name, String email, String password)
@@ -49,6 +53,8 @@ public class Customer
         this.name = name;
         this.email = email;
         this.password = password;
+        setEmail(email);
+        setPassword(password);
     }        
         
     /**
@@ -96,9 +102,6 @@ public class Customer
      */
     public Calendar getJoinDate()
     {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
-        String joinString = sdf.format(joinDate.getTime());
-        System.out.println("Join Date: "+ joinString);
         return joinDate;
         
     }
@@ -134,10 +137,10 @@ public class Customer
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(email);
         if (m.find()) {
-            System.out.println("Email : " + m.group());
+            
             this.email = email;
         } else {
-            System.out.println("Email : NULL");
+           
             this.email = "NULL";
         }
     }
@@ -154,10 +157,10 @@ public class Customer
         Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(password);
         if(m.find()){
-            System.out.println("Password: " + m.group());
+            
             this.password = password;
         }else{
-            System.out.println("Password: NULL");
+            
             this.password = "NULL";
         }
     }
@@ -176,9 +179,35 @@ public class Customer
         this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
     }
     
+    //public String toString()
+    //{
+    //    return "==========CUSTOMER==========\nId: "+id+"\nNama: "+name+"\nEmail: "+email+"\nPassword: "+password+"\nJoin Date: "+joinDate;
+        
+    //}
     public String toString()
     {
-        return "==========CUSTOMER==========\nId: "+id+"\nNama: "+name+"\nEmail: "+email+"\nPassword: "+password+"\nJoin Date: "+joinDate;
-        
+        String string = "";
+        if(joinDate!=null)
+        {
+            Date date = joinDate.getTime();             
+            SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
+            String date1 = format1.format(date);  
+            string = "Customer:\n"+
+                   "ID = "+id+"\n"+
+                   "Nama = "+name+"\n"+
+                   "Email = "+email+"\n"+
+                   "Password = "+password+"\n"+
+                   "Join Date = "+date1+"\n";
+        }
+        else
+        {
+            string = "Customer:\n"+
+                   "ID = "+id+"\n"+
+                   "Nama = "+name+"\n"+
+                   "Email = "+email+"\n"+
+                   "Password = "+password+"\n";
+        }
+        System.out.println(string);
+        return string;
     }
 }
