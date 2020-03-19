@@ -98,6 +98,7 @@ public class Customer
     {
         SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
         String joinString = sdf.format(joinDate.getTime());
+        System.out.println("Join Date: "+ joinString);
         return joinDate;
         
     }
@@ -177,7 +178,7 @@ public class Customer
     
     public String toString()
     {
-        return "==========CUSTOMER==========\nId: "+id+"\nNama: "+name+"\nEmail: "+email+"\nPassword: "+password+"nJoin Date: "+joinDate;
+        return "==========CUSTOMER==========\nId: "+id+"\nNama: "+name+"\nEmail: "+email+"\nPassword: "+password+"\nJoin Date: "+joinDate;
         
     }
 }
