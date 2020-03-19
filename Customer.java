@@ -2,6 +2,9 @@
  * @author Muhammad Koku
  * @version 2020-02-27
  */
+import java.util.*; 
+import java.util.regex.*;
+import java.text.SimpleDateFormat;
 public class Customer
 {
     /**
@@ -10,7 +13,7 @@ public class Customer
     private int id;
     private String name;
     private String email;
-    private String joinDate;
+    private Calendar joinDate;
     private String password;
 
      /**
@@ -22,7 +25,7 @@ public class Customer
      * @param password (customer's password)
      * @param joinDate (customer's join date)
      */
-    public Customer(int id, String name, String email, String password, String joinDate)
+    public Customer(int id, String name, String email, String password, Calendar joinDate)
     {
         this.id =  id;
         this.name = name;
@@ -30,7 +33,24 @@ public class Customer
         this.password = password;
         this.joinDate = joinDate;
     }
-
+    
+    public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
+    {
+        this.id =  id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
+    }
+    
+    public Customer(int id, String name, String email, String password)
+    {
+        this.id =  id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }        
+        
     /**
      * Gets the customer's id
      *
@@ -74,9 +94,12 @@ public class Customer
      *
      * @return joinDate
      */
-    public String getJoinDate()
+    public Calendar getJoinDate()
     {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy");
+        String joinString = sdf.format(joinDate.getTime());
         return joinDate;
+        
     }
     /**
      * Sets the customer's id
@@ -103,8 +126,22 @@ public class Customer
      */
     public void setEmail(String email)
     {
-        this.email = email;
+        String pattern =  "^[a-zA-Z0-9_+&*-]+(?:\\."+  
+                            "[a-zA-Z0-9_+&*-]+)*@" +  
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" +  
+                            "A-Z]{2,7}$";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(email);
+        if (m.find()) {
+            System.out.println("Email : " + m.group());
+            this.email = email;
+        } else {
+            System.out.println("Email : NULL");
+            this.email = "NULL";
+        }
     }
+    
+    
     /**
      * Sets the customer's password
      * 
@@ -112,24 +149,35 @@ public class Customer
      */
     public void setPassword(String password)
     {
-        this.password = password;
+        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(password);
+        if(m.find()){
+            System.out.println("Password: " + m.group());
+            this.password = password;
+        }else{
+            System.out.println("Password: NULL");
+            this.password = "NULL";
+        }
     }
     /**
      * Sets the customer's join date
      * 
      * @param joinDate
      */
-    public void setJoinDate(String joinDate)
+    public void setJoinDate(Calendar joinDate)
     {
         this.joinDate = joinDate;
     }
-    /**
-     * To print out (printData)
-     * 
-     * @param name
-     */
-     public void printData()
+    
+    public void setJoinDate(int year, int month, int dayOfMonth)
     {
-        System.out.println(name);
+        this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
+    }
+    
+    public String toString()
+    {
+        return "==========CUSTOMER==========\nId: "+id+"\nNama: "+name+"\nEmail: "+email+"\nPassword: "+password+"nJoin Date: "+joinDate;
+        
     }
 }

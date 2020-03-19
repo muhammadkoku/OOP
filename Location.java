@@ -90,4 +90,10 @@ public class Location
         System.out.println(province);
     }
     
+    public String toString()
+    {
+        return "==========LOCATION==========\nProvince: "+province+"\nCity: "+city+"\nDescription: "+description;
+        
+    }
+    
 }

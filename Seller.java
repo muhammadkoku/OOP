@@ -126,8 +126,11 @@ public class Seller
      * 
      * @param name
      */
-    public void printData()
+    public String toString()
     {
-        System.out.println(name);
+        return "==========SELLER==========\nId: "+id+"\nNama: "+name+"\nPhone Number: "+phoneNumber+"\nLocation: "+location;
+        
     }
+    
+    
 }

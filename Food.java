@@ -121,20 +121,11 @@ public class Food
     {
         this.category = category;
     }
-    /**
-     * To print out (printData)
-     * 
-     * @param name
-     */
-    public void printData()
+ 
+    public String toString()
     {
-        System.out.println("==========FOOD==========");
-        System.out.println("ID:"+ id);
-        System.out.println("Name:"+ name);
-        System.out.println("Seller:"+ seller.getName());
-        System.out.println("City:" + seller.getLocation().getCity());
-        System.out.println("Price:"+ price);
-        System.out.println("Category:" + category);
+        return "==========FOOD==========\nId: "+id+"\nNama: "+name+"\nSeller: "+seller.getName()+"\nCity: "+seller.getLocation().getCity()+"/nPrice: "+price+"/nCategory: "+category;
+        
     }
     
 }
