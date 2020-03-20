@@ -1,5 +1,5 @@
 import java.util.Calendar;
-
+import java.text.SimpleDateFormat;
 public class CashlessInvoice extends Invoice
 {
         private static final PaymentType PAYMENT_TYPE = PaymentType.Cashless;
@@ -12,8 +12,7 @@ public class CashlessInvoice extends Invoice
     public CashlessInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus)
     {
        super(id, food, customer, invoiceStatus);
-       this.dueDate = Calendar.getInstance();
-       this.dueDate.add(Calendar.DATE, +1);
+       
     }
     
        
@@ -53,12 +52,14 @@ public class CashlessInvoice extends Invoice
     
     public String toString()
     {
+     SimpleDateFormat format1 = new SimpleDateFormat("dd MMMM yyyy");
+     String date = format1.format(getDate().getTime());
      String string = "";
        if ( promo == null || promo.getActive() == false || getFood().getPrice() < promo.getMinPrice())
       {string = "==========INVOICE==========\n"
                 +"ID: "+ super.getId()
                 +"\nFood: "+ super.getFood().getName()
-                +"\nDate: "+ super.getDate()
+                +"\nDate: "+ date
                 +"\nCustomer: "+ super.getCustomer().getName()
                 +"\nTotal Price: "+ super.totalPrice
                 +"\nStatus: "+ super.getInvoiceStatus()
@@ -68,7 +69,7 @@ public class CashlessInvoice extends Invoice
        {string = "==========INVOICE==========\n"
                 +"ID: "+ super.getId()
                 +"\nFood: "+ super.getFood().getName()
-                +"\nDate: "+ super.getDate()
+                +"\nDate: "+ date
                 +"\nCustomer: "+ super.getCustomer().getName()
                 +"\nPromo: "+ promo.getCode()
                 +"\nTotal Price: "+ super.totalPrice

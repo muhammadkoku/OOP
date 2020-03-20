@@ -1,5 +1,6 @@
 
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 public class CashInvoice extends Invoice
 {
     
@@ -46,17 +47,21 @@ public class CashInvoice extends Invoice
     
     
     public String toString()
-    {
+    {   
+        SimpleDateFormat format1 = new SimpleDateFormat("dd MMMM yyyy");
+        String date = format1.format(getDate().getTime());
+        
         String string = "";
         string = "==========INVOICE=========="
                  +"\nID :" + super.getId()
                  +"\nFood :" + super.getFood().getName()
-                 +"\nDate :" + super.getDate()
+                 +"\nDate :" + date
                  +"\nCustomer :" + super.getCustomer().getName()
                  +"\nDelivery Fee:" + deliveryFee
                  +"\nTotal price :" + super.totalPrice
                  +"\nStatus :" + super.getInvoiceStatus()
                  +"\nPayment Type :" + PAYMENT_TYPE;
+        System.out.println(string);
         return string;
     }
 }

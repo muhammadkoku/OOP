@@ -30,7 +30,7 @@ public abstract class Invoice
     {
        this.id = id;
        this.Food = Food;
-       this.date = date;
+       this.date = Calendar.getInstance();
        this.customer = customer;
        this.totalPrice = totalPrice;
        this.invoiceStatus = invoiceStatus;
