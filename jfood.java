@@ -16,10 +16,16 @@ public class Jfood
         Customer customerObj1 = new Customer(433, "Ukok", "Alfiyansyah76@ui.ac.id", "Alfin123", 12,3,2020 );
         Customer customerObj2 = new Customer(434, "alwan", "Alfiyansyah1@yahoo.com", "sss12");
         
+        CashInvoice cashObj = new CashInvoice (1,foodObj, customerObj, InvoiceStatus.Ongoing);
+        CashlessInvoice cashlessObj = new CashlessInvoice (2,foodObj1, customerObj, InvoiceStatus.Ongoing);
+         
         
-        customerObj.toString();
-        customerObj1.toString();
-        customerObj2.toString();
+        cashObj.setTotalPrice();
+        cashlessObj.setTotalPrice();
+        
+        cashObj.toString();
+        cashlessObj.toString();
+        
         
         
         
