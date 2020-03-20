@@ -1,5 +1,5 @@
 
-
+import java.util.Calendar;
 public class CashInvoice extends Invoice
 {
     
@@ -8,14 +8,14 @@ public class CashInvoice extends Invoice
      
 
    
-    public CashInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
+    public CashInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus)
     {
-       super(id, food, date, customer, invoiceStatus);      
+       super(id, food, customer, invoiceStatus);      
     }
     
     public CashInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
     {
-       super(id, food, date, customer, invoiceStatus);
+       super(id, food, customer, invoiceStatus);
        this.deliveryFee = deliveryFee;
     }
     
@@ -44,16 +44,19 @@ public class CashInvoice extends Invoice
         }
     }
     
-    public void printData()
-    {  System.out.println("==========INVOICE==========");
-       System.out.println("ID :" + super.getId());
-       System.out.println("Food :" + super.getFood().getName());
-       System.out.println("Date :" + super.getDate());
-       System.out.println("Customer :" + super.getCustomer().getName());
-       System.out.println("Delivery Fee:" + deliveryFee);
-       System.out.println("Total price :" + super.totalPrice);
-       System.out.println("Status :" + super.getInvoiceStatus());
-       System.out.println("Payment Type :" + PAYMENT_TYPE);
-    }
     
+    public String toString()
+    {
+        String string = "";
+        string = "==========INVOICE=========="
+                 +"\nID :" + super.getId()
+                 +"\nFood :" + super.getFood().getName()
+                 +"\nDate :" + super.getDate()
+                 +"\nCustomer :" + super.getCustomer().getName()
+                 +"\nDelivery Fee:" + deliveryFee
+                 +"\nTotal price :" + super.totalPrice
+                 +"\nStatus :" + super.getInvoiceStatus()
+                 +"\nPayment Type :" + PAYMENT_TYPE;
+        return string;
+    }
 }

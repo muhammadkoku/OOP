@@ -2,6 +2,9 @@
  * @author Muhammad Koku
  * @version 2020-02-27
  */
+import java.util.Calendar;
+import java.util.*;
+import java.text.SimpleDateFormat;
 public abstract class Invoice
 {
    /**
@@ -9,7 +12,7 @@ public abstract class Invoice
      */
     private int id;
     private Food Food;
-    private String date;
+    private Calendar date;
     protected int totalPrice;
     private Customer customer;
     private InvoiceStatus invoiceStatus;
@@ -23,7 +26,7 @@ public abstract class Invoice
      * @param totalprice (invoice's total price)
      * @param customer (invoice's customer)
      */
-    public Invoice(int id, Food Food, String date, Customer customer,  InvoiceStatus invoiceStatus)
+    public Invoice(int id, Food Food, Customer customer,  InvoiceStatus invoiceStatus)
     {
        this.id = id;
        this.Food = Food;
@@ -56,10 +59,11 @@ public abstract class Invoice
      *
      * @return date
      */
-    public String getDate()
+    public Calendar getDate()
     {
         return date;
     }
+    
     /**
      * Gets the invoice's total price
      *
@@ -117,9 +121,13 @@ public abstract class Invoice
      * 
      * @param date
      */
-    public void setDate(String date)
+    public void setDate(Calendar date)
     {
         this.date = date;
+    }
+    public void setDate(int year, int month, int dayOfMonth)
+    {
+        this.date = new GregorianCalendar(year, month-1, dayOfMonth);
     }
     /**
      * Sets the invoice's total price
@@ -154,7 +162,7 @@ public abstract class Invoice
      * @param idFood
      * @param totalPrice
      */
-    public abstract void printData();
+    public abstract String toString();
     
     
    

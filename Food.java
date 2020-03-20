@@ -124,7 +124,7 @@ public class Food
  
     public String toString()
     {
-        return "==========FOOD==========\nId: "+id+"\nNama: "+name+"\nSeller: "+seller.getName()+"\nCity: "+seller.getLocation().getCity()+"/nPrice: "+price+"/nCategory: "+category;
+        return "==========FOOD==========\nId: "+id+"\nNama: "+name+"\nSeller: "+seller.getName()+"\nCity: "+seller.getLocation().getCity()+"\nPrice: "+price+"\nCategory: "+category;
         
     }
     

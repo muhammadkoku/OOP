@@ -53,6 +53,7 @@ public class Customer
         this.name = name;
         this.email = email;
         this.password = password;
+        this.joinDate = Calendar.getInstance();
         setEmail(email);
         setPassword(password);
     }        
@@ -179,11 +180,7 @@ public class Customer
         this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
     }
     
-    //public String toString()
-    //{
-    //    return "==========CUSTOMER==========\nId: "+id+"\nNama: "+name+"\nEmail: "+email+"\nPassword: "+password+"\nJoin Date: "+joinDate;
-        
-    //}
+    
     public String toString()
     {
         String string = "";
