@@ -47,25 +47,29 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1585813447332">
+    <state width="1323" height="434" key="GridCell.Tab.0.bottom" timestamp="1585829792382">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585813447332" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1585813447332">
+    <state width="1323" height="434" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585829792382" />
+    <state width="1323" height="434" key="GridCell.Tab.0.center" timestamp="1585829792382">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585813447332" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1585813447332">
+    <state width="1323" height="434" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585829792382" />
+    <state width="1323" height="434" key="GridCell.Tab.0.left" timestamp="1585829792382">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585813447332" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1585813447332">
+    <state width="1323" height="434" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585829792382" />
+    <state width="1323" height="434" key="GridCell.Tab.0.right" timestamp="1585829792382">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585813447332" />
+    <state width="1323" height="434" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585829792382" />
     <state x="391" y="191" key="com.intellij.ide.util.TipDialog" timestamp="1585812706170">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="391" y="191" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585812706170" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1585826820498">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1585826820498" />
   </component>
 </project>

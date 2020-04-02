@@ -1,14 +1,48 @@
-
+import java.util.ArrayList;
 
 public class DatabaseCustomer
 {
     // instance variables - replace the example below with your own
-    private static String listCustomer[];
+    private static ArrayList<Customer> CUSTOMER_DATABASE= new ArrayList<Customer>();
+    private static int lastId = 0;
 
-   
-    
-   public static boolean addCustomer(Customer customer)
+    public static ArrayList<Customer> getCustomerDatabase(){
+        //return customer;
+        return CUSTOMER_DATABASE;
+    }
+
+    public static int getLastId(){
+        return lastId;
+    }
+
+    public static Customer getCustomerById(int id){
+        Customer value=null;
+        for(Customer customer : CUSTOMER_DATABASE)
+        {
+            if(customer.getId()==id)
+            {
+                value=customer;
+            }
+        }
+        return value;
+
+    }
+
+
+
+    public static boolean addCustomer(Customer customer)
     {
+        boolean found = false;
+        for(Customer temp : CUSTOMER_DATABASE)
+        {
+            if(temp.getName() == customer.getName() && temp.getEmail()
+                    == customer.getEmail())
+            {
+                return false;
+            }
+        }
+        CUSTOMER_DATABASE.add(customer);
+        lastId = customer.getId();
         return true;
     }
     /**
@@ -16,22 +50,18 @@ public class DatabaseCustomer
      *
      * @return true
      */
-    public static boolean removeCustomer(Customer customer)
+    public static boolean removeCustomer(int id)
     {
-        return true;
+        for(Customer temp : CUSTOMER_DATABASE)
+        {
+            if(temp.getId() == id)
+            {
+                CUSTOMER_DATABASE.remove(temp);
+                return true;
+            }
+        }
+        return false;
+
     }
-    //return customer passed to the constructor
-    public static Customer getCustomer()
-    {
-       return null;
-    }
-    /**
-     * Gets the customer list 
-     *
-     * @return listCustomereller
-     */
-    public static String[] getListCustomer()
-    {
-        return listCustomer;
-    }
+
 }

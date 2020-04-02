@@ -5,13 +5,15 @@
 import java.util.Calendar;
 import java.util.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+
 public abstract class Invoice
 {
    /**
      * The variable for class Invoice
      */
     private int id;
-    private Food Food;
+    private ArrayList<Food> foods=new ArrayList<Food>();
     private Calendar date;
     protected int totalPrice;
     private Customer customer;
@@ -21,19 +23,16 @@ public abstract class Invoice
      * Constructor for objects in class Invoice
      * 
      * @param id (invoice's id)
-     * @param idFood (invoice's food id)
-     * @param date (invoice's date)
-     * @param totalprice (invoice's total price)
      * @param customer (invoice's customer)
      */
-    public Invoice(int id, Food Food, Customer customer,  InvoiceStatus invoiceStatus)
+
+    public Invoice(int id, ArrayList<Food> foods, Customer customer)
     {
        this.id = id;
-       this.Food = Food;
+       this.foods = foods;
        this.date = Calendar.getInstance();
        this.customer = customer;
-       this.totalPrice = totalPrice;
-       this.invoiceStatus = invoiceStatus;
+
     }
 
     /**
@@ -50,9 +49,9 @@ public abstract class Invoice
      *
      * @return idFood
      */
-    public Food getFood()
+    public ArrayList<Food> getFoods()
     {
-        return Food;
+        return foods;
     }
     /**
      * Gets the invoice's date
@@ -110,11 +109,11 @@ public abstract class Invoice
     /**
      * Sets the invoice's food id
      * 
-     * @param idFood
+     *
      */
-     public void setFood(Food Food)
+     public void setFoods(ArrayList<Food> foods)
     {
-        this.Food = Food;
+        this.foods = foods;
     }
     /**
      * Sets the invoice's date
@@ -132,7 +131,7 @@ public abstract class Invoice
     /**
      * Sets the invoice's total price
      * 
-     * @param totalPrice
+     *
      */
     public abstract void setTotalPrice();
     
@@ -150,7 +149,7 @@ public abstract class Invoice
     /**
      * Sets the invoice's status
      * 
-     * @param status
+     *
      */
     public void setInvoiceStatus(InvoiceStatus InvoiceStatus)
     {
@@ -159,8 +158,7 @@ public abstract class Invoice
      /**
      * To print out (printData)
      * 
-     * @param idFood
-     * @param totalPrice
+     *
      */
     public abstract String toString();
     

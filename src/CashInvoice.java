@@ -1,6 +1,8 @@
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
+
 public class CashInvoice extends Invoice
 {
     
@@ -9,15 +11,16 @@ public class CashInvoice extends Invoice
      
 
    
-    public CashInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer )
     {
-       super(id, food, customer, invoiceStatus);      
+       super(id, foods, customer);
     }
     
-    public CashInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
+    public CashInvoice(int id, ArrayList<Food> foods, String date, Customer customer,  int deliveryFee)
     {
-       super(id, food, customer, invoiceStatus);
+       super(id, foods, customer);
        this.deliveryFee = deliveryFee;
+
     }
     
     public PaymentType getPaymentType()
@@ -37,11 +40,20 @@ public class CashInvoice extends Invoice
     
     public void setTotalPrice()
     {
+        int foodPrice=0;
         if (deliveryFee != 0 )
-        {super.totalPrice = getFood().getPrice() + deliveryFee;
+        {
+            for(int i = 0; i < super.getFoods().size(); i++)
+            {
+                foodPrice+=super.getFoods().get(i).getPrice();
+            }
+            super.totalPrice = foodPrice + deliveryFee;
         }
-        else 
-        {super.totalPrice = getFood().getPrice();
+        else {
+            for (int i = 0; i < super.getFoods().size(); i++) {
+                foodPrice += super.getFoods().get(i).getPrice();
+            }
+            super.totalPrice = foodPrice;
         }
     }
     
@@ -54,7 +66,7 @@ public class CashInvoice extends Invoice
         String string = "";
         string = "==========INVOICE=========="
                  +"\nID :" + super.getId()
-                 +"\nFood :" + super.getFood().getName()
+                 +"\nFood :" + super.getFoods()
                  +"\nDate :" + date
                  +"\nCustomer :" + super.getCustomer().getName()
                  +"\nDelivery Fee:" + deliveryFee

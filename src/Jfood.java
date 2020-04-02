@@ -2,31 +2,32 @@ import java.util.*;
 import java.util.regex.*;
 import java.text.SimpleDateFormat;
 
-public class Jfood 
-{
-    public static void main (String []args)
-    {
+public class Jfood {
+    public static void main(String[] args) {
         Location locationObj = new Location("Serang", "Banten", "lokasi");
-        Seller sellerObj = new Seller(1, "Muhammad Koku", "muhammad.koku@ui.ac.id", "082292307525", locationObj);
-        Food foodObj =  new Food(101, "Ayam Bakar", sellerObj, 30000, FoodCategory.Snacks);
-        Food foodObj1 =  new Food(102, "Cappucino", sellerObj, 10000, FoodCategory.Coffee);
-        
-        
-        Customer customerObj = new Customer (432, "Alwan", ".alwan.fadhil@gmail.com", "alwan1", new  GregorianCalendar(2020,3,19));
-        Customer customerObj1 = new Customer(433, "Ukok", "Alfiyansyah76@ui.ac.id", "Alfin123", 12,3,2020 );
-        Customer customerObj2 = new Customer(434, "alwan", "Alfiyansyah1@yahoo.com", "sss12");
-        
-        CashInvoice cashObj = new CashInvoice (1,foodObj, customerObj, InvoiceStatus.Ongoing);
-        CashlessInvoice cashlessObj = new CashlessInvoice (2,foodObj1, customerObj, InvoiceStatus.Ongoing);
-         
-        
-        cashObj.setTotalPrice();
-        cashlessObj.setTotalPrice();
-        
-        cashObj.toString();
-        cashlessObj.toString();
-        
-        
+        DatabaseSeller.addSeller(new Seller(1, "Muhammad Koku", "muhammad.koku@ui.ac.id", "082292307525", locationObj));
+        Calendar calendar = new GregorianCalendar(2020, 4, 2);
+
+        DatabaseCustomer.addCustomer(new Customer(1, "Koku", "muhammadkoku@gmail.com", "koku1", calendar));
+        DatabaseCustomer.addCustomer(new Customer(2, "Koku", "muhammadkoku@gmail.com", "koku123", 2020, 4, 2));
+        DatabaseCustomer.addCustomer(new Customer(3, "Rama", "mkharismar@gmail.com", "sss12"));
+
+        System.out.println("Daftar Customer: ");
+        for (Customer customer : DatabaseCustomer.getCustomerDatabase()) {
+            System.out.println(customer.getName());
+        }
+
+        DatabaseFood.addFood(new Food(101, "Ayam Bakar", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 30000, FoodCategory.Snacks));
+        DatabaseFood.addFood(new Food(102, "Ayam Goreng", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 30000, FoodCategory.Snacks));
+        DatabaseFood.addFood(new Food(103, "Cappucino", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 10000, FoodCategory.Coffee));
+
+        System.out.println("Daftar Food Category Snacks: ");
+        for (Food food : DatabaseFood.getFoodByCategory(FoodCategory.Snacks)) {
+            System.out.println(food.getName());
+        }
+    }
+}
+
         
         
       
@@ -34,8 +35,8 @@ public class Jfood
         
         
         
-    }
+
 
    
-    }
+
 
