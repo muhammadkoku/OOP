@@ -76,7 +76,7 @@ public class DatabaseFood
      *
      * @return true
      */
-    public static boolean removeFodd(int id)
+    public static boolean removeFood(int id)
     {
         boolean value=false;
         for(Food foodDB1 : FOOD_DATABASE)
