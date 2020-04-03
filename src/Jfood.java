@@ -17,6 +17,13 @@ public class Jfood {
             System.out.println(customer.getName());
         }
 
+        DatabasePromo.addPromo(new Promo(DatabasePromo.getLastId()+1, "XVGTAKL29", 20000, 50000, false));
+        DatabasePromo.addPromo(new Promo(DatabasePromo.getLastId()+1, "XVGTAKL29", 15000, 70000, true));
+
+        for(Promo promo : DatabasePromo.getPromoDatabase()) {
+            System.out.println(promo);
+        }
+
         DatabaseFood.addFood(new Food(101, "Ayam Bakar", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 30000, FoodCategory.Snacks));
         DatabaseFood.addFood(new Food(102, "Ayam Goreng", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 30000, FoodCategory.Snacks));
         DatabaseFood.addFood(new Food(103, "Cappucino", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 10000, FoodCategory.Coffee));
@@ -25,6 +32,7 @@ public class Jfood {
         for (Food food : DatabaseFood.getFoodByCategory(FoodCategory.Snacks)) {
             System.out.println(food.getName());
         }
+
     }
 }
 

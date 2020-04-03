@@ -19,10 +19,19 @@ public class DatabaseInvoice
     }
 
     public static  boolean addInvoice(Invoice invoice){
+        boolean found = false;
+        for(Invoice temp : INVOICE_DATABASE)
+        {
+            if(temp.getInvoiceStatus() == InvoiceStatus.Ongoing)
+            {
+                return false;
+            }
+        }
         INVOICE_DATABASE.add(invoice);
-        lastId=invoice.getId();
+        lastId = invoice.getId();
         return true;
     }
+
     public static Invoice getInvoiceById(int id){
         Invoice value=null;
         for(Invoice invoice : INVOICE_DATABASE)
