@@ -23,18 +23,18 @@ public class DatabaseFood
         return lastId;
     }
 
-    public static Food getFoodById(int id){
-        Food value=null;
+    public static Food getFoodById(int id) throws FoodNotFoundException {
+
         for(Food foodDB : FOOD_DATABASE)
         {
             if(foodDB.getId()==id)
             {
-                value=foodDB;
+                return foodDB;
             }
         }
-        return value;
+        throw new FoodNotFoundException(id);
     }
-    public static ArrayList<Food> getFoodBySeller(int sellerId){
+    public static ArrayList<Food> getFoodBySeller(int sellerId) throws SellerNotFoundException {
         ArrayList<Food> value=null;
         Seller seller = DatabaseSeller.getSellerById(sellerId);
         for(Food foodDB1 : FOOD_DATABASE)
@@ -70,7 +70,7 @@ public class DatabaseFood
      *
      * @return true
      */
-    public static boolean removeFood(int id)
+    public static boolean removeFood(int id) throws FoodNotFoundException
     {
         boolean value=false;
         for(Food foodDB1 : FOOD_DATABASE)
@@ -81,7 +81,7 @@ public class DatabaseFood
                 value=true;
             }
         }
-        return value;
+        throw new FoodNotFoundException(id);
     }
 
 }

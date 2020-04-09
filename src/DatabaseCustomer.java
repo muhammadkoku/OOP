@@ -15,34 +15,32 @@ public class DatabaseCustomer
         return lastId;
     }
 
-    public static Customer getCustomerById(int id){
-        Customer value=null;
+    public static Customer getCustomerById(int id)throws CustomerNotFoundException {
+
         for(Customer customer : CUSTOMER_DATABASE)
         {
             if(customer.getId()==id)
             {
-                value=customer;
+                return customer;
             }
         }
-        return value;
+        throw new CustomerNotFoundException(id);
 
     }
 
 
 
-    public static boolean addCustomer(Customer customer)
+    public static boolean addCustomer(Customer customer) throws EmailAlreadyExistsException
     {
-        boolean found = false;
-        for(Customer temp : CUSTOMER_DATABASE)
+        for(Customer customerDB : CUSTOMER_DATABASE)
         {
-            if(temp.getName() == customer.getName() && temp.getEmail()
-                    == customer.getEmail())
+            if(customer.getEmail()==customerDB.getEmail())
             {
-                return false;
+                throw new EmailAlreadyExistsException(customer);
             }
         }
         CUSTOMER_DATABASE.add(customer);
-        lastId = customer.getId();
+        lastId =customer.getId();
         return true;
     }
     /**
@@ -50,17 +48,17 @@ public class DatabaseCustomer
      *
      * @return true
      */
-    public static boolean removeCustomer(int id)
+    public static boolean removeCustomer(int id)throws CustomerNotFoundException
     {
-        for(Customer temp : CUSTOMER_DATABASE)
+        for(Customer customerDB : CUSTOMER_DATABASE)
         {
-            if(temp.getId() == id)
+            if(customerDB.getId()==id)
             {
-                CUSTOMER_DATABASE.remove(temp);
+                CUSTOMER_DATABASE.remove(customerDB);
                 return true;
             }
         }
-        return false;
+        throw new CustomerNotFoundException(id);
 
     }
 

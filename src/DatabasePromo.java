@@ -15,16 +15,16 @@ public class DatabasePromo
         return lastId;
     }
 
-    public static Promo getPromoById(int id){
-        Promo value=null;
+    public static Promo getPromoById(int id) throws PromoNotFoundException{
+
         for(Promo promoDB : PROMO_DATABASE)
         {
             if(promoDB.getId()==id)
             {
-                value=promoDB;
+                return promoDB;
             }
         }
-        return value;
+        throw new PromoNotFoundException(id);
     }
 
     public static Promo getPromoByCode(String code){
@@ -40,14 +40,14 @@ public class DatabasePromo
     }
 
 
-    public static boolean addPromo(Promo promo)
+    public static boolean addPromo(Promo promo) throws PromoCodeAlreadyExistsException
     {
-        boolean found = false;
+
         for(Promo temp : PROMO_DATABASE)
         {
             if(temp.getCode() == promo.getCode())
             {
-                return false;
+                throw new PromoCodeAlreadyExistsException(promo);
             }
         }
         PROMO_DATABASE.add(promo);
@@ -55,18 +55,18 @@ public class DatabasePromo
         return true;
     }
     
-    public static boolean removePromo(int id)
+    public static boolean removePromo(int id) throws PromoNotFoundException
     {
-        boolean value=false;
+
         for(Promo promoDB1 : PROMO_DATABASE)
         {
             if(promoDB1.getId()==id)
             {
                 PROMO_DATABASE.remove(promoDB1);
-                value=true;
+                return true;
             }
         }
-        return value;
+        throw new PromoNotFoundException(id);
     }
 
     public static boolean activatePromo(int id) {

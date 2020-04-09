@@ -45,7 +45,7 @@ public class DatabaseInvoice
 
     }
 
-    public static ArrayList<Invoice> getInvoiceByCustomer(int customerId){
+    public static ArrayList<Invoice> getInvoiceByCustomer(int customerId) throws CustomerNotFoundException {
         ArrayList<Invoice> value= new ArrayList<>();
         Customer customer = DatabaseCustomer.getCustomerById(customerId);
         for(Invoice invoiceDB1 : INVOICE_DATABASE)
