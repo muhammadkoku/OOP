@@ -5,7 +5,7 @@ public class CashlessInvoice extends Invoice
 {
         private static final PaymentType PAYMENT_TYPE = PaymentType.Cashless;
         private Promo promo;
-        private Calendar dueDate;
+
 
     /**
      * Constructor for objects of class CashlessInvoice
@@ -17,12 +17,10 @@ public class CashlessInvoice extends Invoice
     }
     
        
-    public CashlessInvoice(int id, ArrayList<Food> foods, String date, Customer customer, InvoiceStatus invoiceStatus, Promo promo)
+    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, Promo promo)
     {
        super(id, foods, customer);
        this.promo = promo;
-       this.dueDate = Calendar.getInstance();
-       this.dueDate.add(Calendar.DATE, +1);
     }
     
     public PaymentType getPaymentType()
@@ -42,40 +40,40 @@ public class CashlessInvoice extends Invoice
     
     public void setTotalPrice()
     {
-        int foodPrice=0;
-        for(int i = 0; i < super.getFoods().size(); i++){
-            foodPrice+=super.getFoods().get(i).getPrice();
-        }
-        if(promo!=null&&promo.getActive()==true&&foodPrice>promo.getMinPrice())
+        super.totalPrice=0;
+        for(Food foodList : getFoods())
         {
-            super.totalPrice=foodPrice-promo.getDiscount();
+            super.totalPrice=super.totalPrice+foodList.getPrice();
         }
-        else super.totalPrice=foodPrice;
+        if(promo!=null&&promo.getActive()==true&&super.totalPrice>=promo.getMinPrice())
+        {
+            super.totalPrice=super.totalPrice-promo.getDiscount();
+        }
+        else super.totalPrice=super.totalPrice;
     }
 
 
     public String toString()
     {
-        int tempPrice = 0;
-        String foodName = "";
-        for (Food food : getFoods())
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        String foods = "";
+        for(Food foodList : getFoods())
         {
-            tempPrice += food.getPrice();
-            foodName += food.getName() + ", ";
+            foods = foods + foodList.getName() + ", ";
         }
-        SimpleDateFormat format1 = new SimpleDateFormat("dd MMMM yyyy");
-        String date = format1.format(getDate().getTime());
-        if (getPromo() != null && getPromo().getActive() == true && tempPrice > getPromo().getMinPrice())
+        foods = foods.substring(0, foods.length() - 2);
+        String date = sdf.format(getDate().getTime());
+        if (getPromo() != null && getPromo().getActive() == true)
         {
 
             return "\n================Invoice================" + "\n" +
-                    "ID: " + getId() + "\n" +
-                    "Name: " + foodName + "\n" +
+                    "ID: " + super.getId() + "\n" +
+                    "Name: " + foods + "\n" +
                     "Date: " + date + "\n" +
-                    "Customer: " + getCustomer().getName() + "\n" +
+                    "Customer: " + super.getCustomer().getName() + "\n" +
                     "Promo: " + getPromo().getCode() + "\n" +
                     "Total Price: " + totalPrice + "\n" +
-                    "Status: " + getInvoiceStatus() + "\n" +
+                    "Status: " + super.getInvoiceStatus() + "\n" +
                     "Payment Type: " + getPaymentType() + "\n";
 
 
@@ -84,12 +82,12 @@ public class CashlessInvoice extends Invoice
         {
 
             return "\n================Invoice================" + "\n" +
-                    "ID: " + getId() + "\n" +
-                    "Name: " + foodName + "\n" +
+                    "ID: " + super.getId() + "\n" +
+                    "Name: " + foods + "\n" +
                     "Date: " + date + "\n" +
-                    "Customer: " + getCustomer().getName() + "\n" +
+                    "Customer: " + super.getCustomer().getName() + "\n" +
                     "Total Price: " + totalPrice + "\n" +
-                    "Status: " + getInvoiceStatus() + "\n" +
+                    "Status: " + super.getInvoiceStatus() + "\n" +
                     "Payment Type: " + getPaymentType() + "\n";
 
         }

@@ -47,12 +47,12 @@ public class DatabasePromo
         {
             if(temp.getCode() == promo.getCode())
             {
-                return true;
+                return false;
             }
         }
         PROMO_DATABASE.add(promo);
         lastId = promo.getId();
-        return false;
+        return true;
     }
     
     public static boolean removePromo(int id)
@@ -62,7 +62,7 @@ public class DatabasePromo
         {
             if(promoDB1.getId()==id)
             {
-                PROMO_DATABASE.remove(id);
+                PROMO_DATABASE.remove(promoDB1);
                 value=true;
             }
         }

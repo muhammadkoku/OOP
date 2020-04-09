@@ -121,11 +121,7 @@ public class Seller
     {
         this.location = location;
     }
-    /**
-     * To print out (printData)
-     * 
-     * @param name
-     */
+
     public String toString()
     {
         return "==========SELLER==========\nId: "+id+"\nNama: "+name+"\nPhone Number: "+phoneNumber+"\nLocation: "+location;

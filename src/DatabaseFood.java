@@ -22,6 +22,7 @@ public class DatabaseFood
     public static int getLastId(){
         return lastId;
     }
+
     public static Food getFoodById(int id){
         Food value=null;
         for(Food foodDB : FOOD_DATABASE)
@@ -33,11 +34,12 @@ public class DatabaseFood
         }
         return value;
     }
-    public static ArrayList<Food> getFoodBySeller(Seller seller){
+    public static ArrayList<Food> getFoodBySeller(int sellerId){
         ArrayList<Food> value=null;
+        Seller seller = DatabaseSeller.getSellerById(sellerId);
         for(Food foodDB1 : FOOD_DATABASE)
         {
-            if(foodDB1.getSeller()== seller)
+            if(foodDB1.getSeller().equals(seller))
             {
                 value.add(foodDB1);
             }
@@ -45,11 +47,11 @@ public class DatabaseFood
         return value;
     }
 
-    public static ArrayList<Food> getFoodByCategory(FoodCategory category){
+    public static ArrayList<Food> getFoodByCategory(FoodCategory foodCategory){
         ArrayList<Food> filteredByCategory= new ArrayList<Food>(0);;
-        for (int i = 0; i < FOOD_DATABASE.size(); i++) {
-            if(category==FOOD_DATABASE.get(i).getCategory()){
-                filteredByCategory.add(FOOD_DATABASE.get(i));
+        for(Food food : FOOD_DATABASE) {
+            if(food.getCategory().equals(foodCategory)){
+                filteredByCategory.add(food);
             }
         }
         return filteredByCategory;
@@ -57,17 +59,9 @@ public class DatabaseFood
 
     public static boolean addFood(Food food)
     {
-        boolean found = false;
-        for(Food temp : FOOD_DATABASE)
-        {
-            if(temp.getName() == food.getName() && temp.getSeller() == food.getSeller())
-            {
-                return true;
-            }
-        }
         FOOD_DATABASE.add(food);
         lastId = food.getId();
-        return false;
+        return true;
     }
 
 

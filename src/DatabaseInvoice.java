@@ -14,15 +14,15 @@ public class DatabaseInvoice
 
     }
 
-    public static int getLastInvoiceID(){
+    public static int getLastId(){
         return lastId;
     }
 
     public static  boolean addInvoice(Invoice invoice){
-        boolean found = false;
+        int customerId = invoice.getCustomer().getId();
         for(Invoice temp : INVOICE_DATABASE)
         {
-            if(temp.getInvoiceStatus() == InvoiceStatus.Ongoing)
+            if(temp.getCustomer().getId() == customerId && temp.getInvoiceStatus() == InvoiceStatus.Ongoing)
             {
                 return false;
             }
@@ -46,7 +46,8 @@ public class DatabaseInvoice
     }
 
     public static ArrayList<Invoice> getInvoiceByCustomer(int customerId){
-        ArrayList<Invoice> value=null;
+        ArrayList<Invoice> value= new ArrayList<>();
+        Customer customer = DatabaseCustomer.getCustomerById(customerId);
         for(Invoice invoiceDB1 : INVOICE_DATABASE)
         {
             if(invoiceDB1.getCustomer().getId()== customerId)
@@ -66,7 +67,7 @@ public class DatabaseInvoice
             {
                 if(temp.getInvoiceStatus() == InvoiceStatus.Ongoing)
                 {
-                    temp.setInvoiceStatus(InvoiceStatus.Finished);
+                    temp.setInvoiceStatus(invoiceStatus);
                     return true;
                 }
             }

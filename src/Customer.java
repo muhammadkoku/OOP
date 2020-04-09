@@ -142,7 +142,7 @@ public class Customer
             this.email = email;
         } else {
            
-            this.email = "NULL";
+            this.email = "";
         }
     }
     
@@ -162,7 +162,7 @@ public class Customer
             this.password = password;
         }else{
             
-            this.password = "NULL";
+            this.password = "";
         }
     }
     /**

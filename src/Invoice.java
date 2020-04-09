@@ -115,15 +115,7 @@ public abstract class Invoice
     {
         this.foods = foods;
     }
-    /**
-     * Sets the invoice's date
-     * 
-     * @param date
-     */
-    public void setDate(Calendar date)
-    {
-        this.date = date;
-    }
+
     public void setDate(int year, int month, int dayOfMonth)
     {
         this.date = new GregorianCalendar(year, month-1, dayOfMonth);
@@ -151,7 +143,7 @@ public abstract class Invoice
      * 
      *
      */
-    public void setInvoiceStatus(InvoiceStatus InvoiceStatus)
+    public void setInvoiceStatus(InvoiceStatus invoiceStatus)
     {
         this.invoiceStatus = invoiceStatus;
     }

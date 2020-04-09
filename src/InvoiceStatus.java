@@ -9,15 +9,16 @@ public enum InvoiceStatus
 {
     Ongoing("Ongoing"),
     Finished("Finished"),
-    Cancelled("Cancelled");
-    private String statusInvoice;
-    
-    InvoiceStatus(String statusInvoice){
-        this.statusInvoice = statusInvoice;
+    Canceled("Cancelled");
+
+    private String status;
+
+    InvoiceStatus(String status){
+        this.status=status;
     }
-    
-    private String statusInvoice(){
-        return statusInvoice;
+
+    public String toString(){
+        return status;
     }
     
    

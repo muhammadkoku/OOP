@@ -29,15 +29,6 @@ public class DatabaseSeller
     
     public static boolean addSeller(Seller seller)
     {
-        boolean found = false;
-        for(Seller temp : SELLER_DATABASE)
-        {
-            if(temp.getName() == seller.getName() && temp.getEmail()
-                    == seller.getEmail())
-            {
-                return false;
-            }
-        }
         SELLER_DATABASE.add(seller);
         lastId = seller.getId();
         return true;
@@ -58,19 +49,5 @@ public class DatabaseSeller
             }
         }
         return false;
-    }
-    //return seller passed to the constructor
-    public static Seller getSeller()
-    {
-       return null;
-    }
-    /**
-     * Gets the seller list 
-     *
-     * @return listSeller
-     */
-    public static String[] getListSeller()
-    {
-        return null;
     }
 }
