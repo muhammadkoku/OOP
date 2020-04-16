@@ -37,7 +37,7 @@ public class DatabaseFood
         throw new FoodNotFoundException(id);
     }
     public static ArrayList<Food> getFoodBySeller(int sellerId) throws SellerNotFoundException {
-        ArrayList<Food> value=null;
+        ArrayList<Food> value= new ArrayList<Food>(0);
         Seller seller = DatabaseSeller.getSellerById(sellerId);
         for(Food foodDB1 : FOOD_DATABASE)
         {

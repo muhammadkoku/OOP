@@ -6,7 +6,7 @@ public class DatabaseSeller
 {
 
     private static ArrayList<Seller> SELLER_DATABASE= new ArrayList<Seller>();
-    private static int lastId=0 ;
+    private static int lastId ;
     /**
      * Constructor for objects of class DatabaseSeller
      */

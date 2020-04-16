@@ -28,6 +28,8 @@ public class Location
      this.description = description;
      this.province = province;
     }
+
+
     /**
      * Gets the province of location
      *
