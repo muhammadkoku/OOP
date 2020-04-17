@@ -39,8 +39,8 @@ public class CustomerController {
         return customer;
     }
 
-    @RequestMapping(value="/customer/login", method=RequestMethod.POST)
-    public Customer loginCustomer (@RequestParam(value= "email") String email,
+    @RequestMapping(value="/login", method=RequestMethod.POST)
+    public Customer loginCustomer (@RequestParam(value = "email") String email,
                                    @RequestParam(value= "password") String password
     )
     {

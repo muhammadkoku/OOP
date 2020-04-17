@@ -40,7 +40,7 @@ public class Seller
      */
     public int getId()
     {
-        return 0;
+        return id;
     }
     /**
      * Gets the seller's name
@@ -126,8 +126,10 @@ public class Seller
 
     public String toString()
     {
-        return "==========SELLER==========\nId: "+id+"\nNama: "+name+"\nPhone Number: "+phoneNumber+"\nLocation: "+location;
-        
+        return "Id = " + getId() +
+                "Name = " + getName() +
+                "Phone Number = " + getPhoneNumber() +
+                "Location =" + getLocation().getCity();
     }
     
     

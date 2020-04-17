@@ -178,32 +178,28 @@ public class Customer
     {
         this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
     }
-    
-    
+
+
     public String toString()
     {
-        String string = "";
-        if(joinDate!=null)
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+
+        if (joinDate != null)
         {
-            Date date = joinDate.getTime();             
-            SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
-            String date1 = format1.format(date);  
-            string = "Customer:\n"+
-                   "ID = "+id+"\n"+
-                   "Nama = "+name+"\n"+
-                   "Email = "+email+"\n"+
-                   "Password = "+password+"\n"+
-                   "Join Date = "+date1+"\n";
+            return  "========Customer========" +
+                    "\nId = " + getId() +
+                    "\nNama = " + getName() +
+                    "\nEmail = " + getEmail() +
+                    "\nPassword = " + getPassword() +
+                    "\nTanggal Join = " + sdf.format(getJoinDate().getTime())+"\n";
         }
         else
         {
-            string = "Customer:\n"+
-                   "ID = "+id+"\n"+
-                   "Nama = "+name+"\n"+
-                   "Email = "+email+"\n"+
-                   "Password = "+password+"\n";
+            return  "\n========Customer========" +
+                    "\nId = " + getId() +
+                    "\nNama = " + getName() +
+                    "\nEmail = " + getEmail() +
+                    "\nPassword = " + getPassword() + "\n";
         }
-        System.out.println(string);
-        return string;
     }
 }

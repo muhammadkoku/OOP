@@ -8,6 +8,10 @@ public class DatabaseCustomer
     private static ArrayList<Customer> CUSTOMER_DATABASE= new ArrayList<Customer>();
     private static int lastId = 0;
 
+    public DatabaseCustomer()
+    {
+    }
+
     public static ArrayList<Customer> getCustomerDatabase(){
         //return customer;
         return CUSTOMER_DATABASE;
@@ -36,7 +40,7 @@ public class DatabaseCustomer
     {
         for(Customer customerDB : CUSTOMER_DATABASE)
         {
-            if(customer.getEmail()==customerDB.getEmail())
+            if(customer.getEmail().equals(customerDB.getEmail()))
             {
                 throw new EmailAlreadyExistsException(customer);
             }
