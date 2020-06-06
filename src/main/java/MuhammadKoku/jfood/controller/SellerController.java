@@ -4,7 +4,7 @@ import MuhammadKoku.jfood.*;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
-
+@CrossOrigin(origins ="",allowedHeaders="")
 @RestController
 public class SellerController {
 

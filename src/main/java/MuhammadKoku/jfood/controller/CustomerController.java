@@ -1,9 +1,16 @@
 package MuhammadKoku.jfood.controller;
 
-import MuhammadKoku.jfood.*;
+import MuhammadKoku.jfood.Customer;
+import MuhammadKoku.jfood.CustomerNotFoundException;
+import MuhammadKoku.jfood.DatabaseCustomer;
+import MuhammadKoku.jfood.EmailAlreadyExistsException;
+
 import org.springframework.web.bind.annotation.*;
 
+
 @RequestMapping("/customer")
+
+@CrossOrigin(origins ="",allowedHeaders="")
 @RestController
 public class CustomerController {
 
