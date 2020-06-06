@@ -127,11 +127,10 @@ public class InvoiceController {
         } catch (CustomerNotFoundException e) {
             e.printStackTrace();
         }
+        try {
         Invoice input = new CashlessInvoice( DatabaseInvoice.getLastId() + 1, foodList, customer, DatabasePromo.getPromoByCode(promoCode));
         input.setTotalPrice();
-
-        try {
-            DatabaseInvoice.addInvoice(input);
+        DatabaseInvoice.addInvoice(input);
         } catch (OngoingInvoiceAlreadyExistsException e) {
             e.printStackTrace();
         }
