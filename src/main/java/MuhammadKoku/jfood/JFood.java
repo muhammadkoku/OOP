@@ -6,11 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JFood {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PromoCodeAlreadyExistsException {
 
         Location locationObj = new Location("Serang", "Banten", "lokasi");
 
         DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId() + 1, "Abang", "abang@abang.com", "08172612615", locationObj));
+        DatabasePromo.addPromo(new Promo(DatabasePromo.getLastId()+1, "abc", 1000, 5000,true));
 
         try {
             DatabaseFood.addFood(new Food(DatabaseFood.getLastId() + 1, "Uduk", DatabaseSeller.getSellerById(1), 8000, FoodCategory.Rice));
