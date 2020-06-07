@@ -69,7 +69,7 @@ public class InvoiceController {
     @RequestMapping(value = "/createCashInvoice", method = RequestMethod.POST)
     public Invoice addCashInvoice(@RequestParam(value = "foodIdList") ArrayList<Integer> foodIdList,
                                   @RequestParam(value = "customerId") int customerId,
-                                  @RequestParam(value = "deliveryFee") int deliveryFee) throws CustomerNotFoundException {
+                                  @RequestParam(value="deliveryFee",required = false,defaultValue = "0") int deliveryFee) {
 
         ArrayList<Food> foodList = new ArrayList<>();
         Customer customer = null;
@@ -100,7 +100,7 @@ public class InvoiceController {
     @RequestMapping(value = "/createCashlessInvoice", method = RequestMethod.POST)
     public Invoice addCashlessInvoice(@RequestParam(value = "foodIdList") ArrayList<Integer> foodIdList,
                                       @RequestParam(value = "customerId") int customerId,
-                                      @RequestParam(value = "promoCode") String promoCode){
+                                      @RequestParam(value="promoCode",required = false) String promoCode){
 
         ArrayList<Food> foodList = new ArrayList<>();
         Customer customer = null;
