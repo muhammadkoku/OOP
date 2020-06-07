@@ -27,7 +27,7 @@ public class InvoiceController {
     }
 
     @RequestMapping("/customer/{customerId}")
-    public ArrayList<Invoice> getInvoiceByCustomer(@PathVariable int customerId) {
+    public ArrayList<Invoice> getInvoiceByCustomer(@PathVariable int customerId) throws CustomerNotFoundException {
         ArrayList<Invoice> invoice = new ArrayList<Invoice>(0);
         try {
             invoice = DatabaseInvoice.getInvoiceByCustomer(customerId);
@@ -86,26 +86,16 @@ public class InvoiceController {
         } catch (CustomerNotFoundException e) {
             System.out.println(e.getMessage());
         }
-        Invoice input = new CashInvoice(DatabaseInvoice.getLastId() + 1, foodList,
-                customer,
-                deliveryFee);
-        input.setTotalPrice();
-
         try {
-            DatabaseInvoice.addInvoice(input);
+        Invoice input = new CashInvoice(DatabaseInvoice.getLastId() + 1, foodList, customer, deliveryFee);
+        DatabaseInvoice.addInvoice(input);
+        input.setTotalPrice();
+        return input;
+
         } catch (OngoingInvoiceAlreadyExistsException e) {
             System.out.println(e.getMessage());
+            return null;
         }
-
-        Invoice temp;
-        try {
-            temp = DatabaseInvoice.getInvoiceById(DatabaseInvoice.getLastId());
-            return temp;
-        } catch (InvoiceNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return null;
     }
     @RequestMapping(value = "/createCashlessInvoice", method = RequestMethod.POST)
     public Invoice addCashlessInvoice(@RequestParam(value = "foodIdList") ArrayList<Integer> foodIdList,
@@ -129,21 +119,15 @@ public class InvoiceController {
         }
         try {
         Invoice input = new CashlessInvoice( DatabaseInvoice.getLastId() + 1, foodList, customer, DatabasePromo.getPromoByCode(promoCode));
-        input.setTotalPrice();
         DatabaseInvoice.addInvoice(input);
+        input.setTotalPrice();
+        return input;
+
         } catch (OngoingInvoiceAlreadyExistsException e) {
             e.printStackTrace();
+            return null;
         }
 
-        Invoice temp;
-        try {
-            temp = DatabaseInvoice.getInvoiceById(DatabaseInvoice.getLastId());
-            return temp;
-        } catch (InvoiceNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return null;
     }
 
 }
